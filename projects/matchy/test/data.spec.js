@@ -2,7 +2,7 @@ const
     _ = require("lodash"),
     expect = require('chai').expect,
     sinon = require('sinon'),
-    path = '../.master/data';
+    path = '../data';
 
     
 // mocha -R spec --grep data

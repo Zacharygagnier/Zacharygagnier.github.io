@@ -2,8 +2,8 @@ const
     _ = require("lodash"),
     expect = require('chai').expect,
     sinon = require('sinon'),
-    pathData = '../.master/data',
-    pathFunctions = '../.master/functions'
+    pathData = '../data',
+    pathFunctions = '../functions'
 
 
 // mocha -R spec --grep functions
