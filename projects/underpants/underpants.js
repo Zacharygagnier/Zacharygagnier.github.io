@@ -373,12 +373,13 @@ _.contains = function(arr, val){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+
 _.every = function(collection, func){
     var final = true;
     _.each(collection, function(e, i, a){
-        if (func === undefined && !e){
+        if (!func && !e){
             final = false;
-        } else if (func !== undefined && !func(e)) {
+        } else if (func !== undefined && !func(e, i, a)) {
             final = false;
         }
     });
@@ -406,15 +407,17 @@ _.every = function(collection, func){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
+
 _.some = function (collection, func){
+   var final = false;
    _.each(collection, function(e, i, a){
-        if (func(e) == true){
-            return true;
-        } else if (!func && e){
-            return true;
+        if (!func && e){
+            final = true;
+        } else if (func !== undefined && func(e,i,a)){
+            final = true;
         }
     });
-return false;
+return final;
 };
 
 
@@ -438,15 +441,15 @@ return false;
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 _.reduce = function(arr, func, seed){
-    var result = seed;
-    if (typeof seed !== 'number'){
-    result = arr[0];
-    arr.shift();
+    let total = seed, i = 0;
+    if (total === undefined){
+        total = arr[0];
+        i = 1;
     }
-    _.each(arr, function(e,i,a){
-            result = func(result, e, i);
-        });
-    return result;
+for (; i < arr.length; i++){
+    total = func(total, arr[i], i, arr);
+}
+return total;
 };
 
 
@@ -466,15 +469,13 @@ _.reduce = function(arr, func, seed){
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 _.extend = function(obj){
-    var first = obj;
     var args = Array.from(arguments);
-    args.shift();
     _.each(args, function(e, i, a){
         _.each(e, function(e,i,a){
-            first[i] = e;
+            args[0][i] = e;
         });
     });
-    return first;
+    return args[0];
 };
 
 // This is the proper way to end a javascript library
