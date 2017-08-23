@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/notes/notes.js"></script>
+    <title>A Well of HTML</title>
+    <style type="text/css">
+    
+.example-form {
+    /* Just to center the form on the page, use: margin: 0 auto;*/
+    margin: 20px;
+    width: 400px;
+    /* To see the outline of the form */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+.example-form div + div {
+    margin-top: 1em;
+}
+
+.example-form label {
+    /* To make sure that all labels have the same size and are properly aligned */
+    display: inline-block;
+    width: 90px;
+}
+
+.example-form input,
+.example-form textarea {
+    /* To make sure that all text fields have the same font settings
+    By default, textareas have a monospace font */
+    font: 1em sans-serif;
+    /* To give the same size to all text field */
+    width: 300px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* To harmonize the look & feel of text field border */
+    border: 1px solid #999;
+}
+
+.example-form input:focus,
+.example-form textarea:focus {
+    /* To give a little highlight on active elements */
+    border-color: #000;
+}
+
+.example-form textarea {
+    /* To properly align multiline text fields with their labels */
+    vertical-align: top;
+    /* To give enough room to type some text */
+    height: 5em;
+    /* To allow users to resize any textarea vertically
+    It does not work on every browsers */
+    resize: vertical;
+}
+table {
+    margin: 20px;
+}
+
+table,
+th,
+td {
+    padding: 4px;
+    border: 1px solid black;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 4px;
+}
+.example-grid {
+    margin: 20px;
+}
+
+.row-img {
+    margin: 4px;
+}
+.footer{
+     text-align: center;
+}
+.headText{
+     text-align: center;
+}
+.row{
+    background-color:lightblue
+}
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <!-- ALL YOUR MARKUP GOES BELOW HERE -->
+        <div class='row'>
+            <img class='col-md-4' src='img/apple-in-grass.jpg' />
+            <h1 class='headText'>Hello</h1>
+            <h2 class='headText'>Welcome to</h2>
+            <h3 class='headText'><em>Slowcooker Recipe Land</em></h3>
+            <h4 class='headText'>Hosting recipes for all the <small>lazy</small> chefs</h4>
+            <h5 class='headText'>who refuse to cook on a </h5>
+            <h6 class='headText'><strong>grill</strong></h6>
+        </div>
+        <p>Here at slowcooker recipe land we are dedicated too compiling a list of
+        some of the <i>greatest</i> slowcooker recipes we can find. We are accepting any
+        new recipes through the form below so <b>please</b> submit any you feel like sharing
+        </p>
+        <p>We recommend only using fresh bought ingrediants as the consistency and times
+        may change depending on them.</p>
+        <div class='flex-row'>
+            <ul>
+                <li>Carrots</li>
+                <li>Beef Roast</li>
+                <li>Cream of Mushroom Soup</li>
+                <li>Beef Stock</li>
+                <li>Potatoes</li>
+                <li>French Onion Soup Mix</li>
+                <li>Onions</li>
+            </ul>
+            <ol>
+                <li>Flour and salt beef roast then sear</li>
+                <li>Cook onions in butter until translucent</li>
+                <li>Add cream of mushroom soup and french onion soup mix to pot</li>
+                <li>Add beef stock and onions, mix well</li>
+                <li>Add beef roast</li>
+                <li>Cut carrots and potatoes and add on top</li>
+                <li>Slow cook for 4 hours</li>
+            </ol>
+            <dl>
+                <dt>Searing</dt>
+                <dd>When searing be careful that no water is left on whatever meat you are searing</dd>
+                <dt>Tips</dt>
+                <dd>Do not leave the slowcooker on for more than several hours after it's finished</dd>
+            </dl>
+        </div>
+        <div class='flex-row'>
+            <form class='example-form' action='submission-form' method='post'>
+                <div>
+                    <label for='name'>Name of recipe:</label>
+                    <input type='text' id='name' name='user_name'>
+                </div>
+                <div>
+                    <label for='mail'>Email:</label>
+                    <input type='email' id='email' name='user_mail'>
+                </div>
+                <div>
+                    <label for='recipe'>Recipe:</label>
+                    <textarea id='recipe' name='user_recipe'></textarea>
+                </div>
+                <div class='button'>
+                    <button type='submit'>Send in recipe</button>
+                </div>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th><b>Recipe</b></th>
+                        <th><b>Hours</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Chicken Tikka Masala</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Beef Roast</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Mozzarella Meatballs</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <td colspan='2'>All recipes on high</td>
+                </tfoot>
+            </table>
+        </div>
+        <div class='footer'>
+        <a href='http://reddit.com/r/slowcooking'>more slowcooker recipes</a>
+        </div>
+        <div class='footer'>All recipe submissions are for slowcookers</div>
+        <div class='footer'>Your name will be attributed to the recipe unless you choose to remain anonymous</div>
+        <div class='footer'>Thank you for your participation</div>
+        <!-- ALL YOUR MARKUP GOES ABOVE HERE -->
+    </div>
+    <script>
+        $(function () {
+            window.opspark.notes.show();
+        });
+    </script>
+</body>
+
+</html
