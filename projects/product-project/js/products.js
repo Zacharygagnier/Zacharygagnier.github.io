@@ -16,7 +16,7 @@ $.getJSON('data/product.json', function(data){
         // .addClass('flex-row')
         .css('align-items', 'center')
         .css('margin', 'auto')
-        .css('height', '40px')
+        .css('height', '60px')
         .prependTo($('#list-section'));
    
     $('<ul>')
@@ -34,6 +34,7 @@ $.getJSON('data/product.json', function(data){
     $('<div>')
         .addClass('insideModal')
         .attr('id', `modalBox`)
+        .css('border-radius', '15px')
         .appendTo($(`#modaltest`));
 
     $('<div>')
@@ -48,14 +49,27 @@ $.getJSON('data/product.json', function(data){
     $('<button>')
         .attr('id', 'addToCart')
         .text('Add to Cart')
+        .css('margin', 'auto')
+        .css('background-color', 'lightgreen')
+        .css('padding', '10px')
+        // .css('padding-bottom', '5px')
+        // .css('padding-top', '5px')
+        .css('margin-bottom', '20px')
+        .css('border-radius', '20px')
+        .css('display', 'block')
         .appendTo($('#modalBox'));
     $('<button>')
         .attr('id', 'closeModal')
         .text('Close')
+        .css('margin', 'auto')
+        .css('padding', '15px')
+        .css('background-color', 'rgb(255, 51, 51)')
+        .css('display', 'block')
         .appendTo('#modalBox');
     $('<select>')
         .attr('id', 'filterSort')
         .css('text-align', 'center')
+        .css('height', '100%')
         .appendTo($('#prompt-area'));
     $('<div>') //creates a new description div and appends to modalbody
         .css('width', '70%')
@@ -69,19 +83,25 @@ $.getJSON('data/product.json', function(data){
         .attr('type', 'text')
         .attr('name', 'searchProducts')
         .attr('id', 'searchBox')
+        .css('height', '100%')
+        .css('display', 'inline')
+        .css('margin', 'auto')
         .attr('placeholder', 'Search')
         .appendTo($('#prompt-area'));
     $('<button>')
         .attr('type', 'submit')
         .attr('id', 'search')
-        .css('text-align', 'center')
-        .css('margin', 'auto')
+        .css('display', 'inline')
+        .css('height', '100%')
+        // .css('margin', '20%')
+        // .css('float', 'right')
         .text('Search')
         .appendTo($('#prompt-area'));
     $('<button>')
         .attr('type', 'button')
         .attr('id', 'cartButton')
         .css('height', '100%')
+        .css('background-color', 'lightgreen')
         .css('float', 'right')
         .text('View Cart')
         .appendTo($('#prompt-area'));
@@ -165,7 +185,7 @@ $.getJSON('data/product.json', function(data){
     'margin': '15% auto', /* 15% from the top and centered */
     'padding': '20px',
     'border': '1px solid #888',
-    'width': '80%' /* Could be more or less, depending on screen size */
+    'width': '50%' /* Could be more or less, depending on screen size */
 });
 };
    var refreshFunctions = function(){
@@ -195,26 +215,27 @@ $.getJSON('data/product.json', function(data){
         // $('#totalCostDiv')
         //     .html(`<b>Cart Total:</b> $${totalCost}`);
         $('<li>')
-            .addClass('flex-row')
             .css('height', '10%')
             .css('width', '90%')
-            .attr('cost', `${currentModal.price}`)
+            // .attr('cost', `${currentModal.price}`)
         .append($('<img>')
             .attr('src', `img/product/thumbs/${currentModal.image}`)
             .css('width', '20%')
             .css('height', '20%'))
+            .append($('<div>')
         .append($('<p>')
-            .text(currentModal.desc))
-        .append($('<div>')
-            .text(`$${currentModal.price}`))
+            .html(`${currentModal.desc} <br> $${currentModal.price}`)))
+        // .append($('<div>')
+        //     .text(`$${currentModal.price}`))
         .append($('<button>')
             .addClass('removeButton')
+            .css('background-color', 'rgb(255, 51, 51)')
+            .css('border-radius', '20px')
             .text('Remove from Cart'))
         .appendTo('#cartList');
         
         $('.removeButton').on('click', function(event){
-            var costRemove = $(event.target).parent().attr('cost');
-            console.log(costRemove);
+            // var costRemove = $(event.target).parent().attr('cost');
               // totalCost -= $(event.target).parent().getAttribute('cost');
             $(event.target).parent().remove();
     });
@@ -291,7 +312,6 @@ var productCss = function(){
     
     //$('#searchBox').change(function(event){
     $('#search').on('click', function(event){
-        console.log('clicked');
         $('#itemList').empty();
         var fillType = $('#filterSort')[0].value.toLowerCase();
         var filtered = data.filter(function(e,i,a){
